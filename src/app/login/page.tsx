@@ -105,7 +105,7 @@ export default function LoginPage() {
                     </form>
 
                     <div className="w-full mt-6 text-center text-[13px] text-gray-500">
-                        Don't have an account?{' '}
+                        Don&apos;t have an account?{' '}
                         <Link href="#" className="font-bold text-[#F1592A] hover:text-[#d64a20] transition-colors">
                             Register
                         </Link>
@@ -124,7 +124,7 @@ export default function LoginPage() {
             {/* Demo Mode Banner */}
             <div className="w-full max-w-[420px] mt-4 bg-white/90 backdrop-blur-sm shadow-md rounded-md py-3 px-4 text-center z-10">
                 <p className="text-[11px] font-medium text-gray-700">
-                    <span className="font-bold text-gray-900">Demo Mode:</span> Click "Sign In" to view the dashboard
+                    <span className="font-bold text-gray-900">Demo Mode:</span> Click &quot;Sign In&quot; to view the dashboard
                 </p>
             </div>
 

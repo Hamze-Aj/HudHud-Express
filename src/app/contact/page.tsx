@@ -21,7 +21,7 @@ export default function ContactPage() {
                     Contact & Support
                 </h1>
                 <p className="text-gray-500 text-[15px]">
-                    We're here to help with any questions or concerns
+                    We&apos;re here to help with any questions or concerns
                 </p>
             </section>
 
