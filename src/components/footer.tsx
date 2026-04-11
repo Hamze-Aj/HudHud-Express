@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Linkedin, PhoneCall, Mail, MapPin, Box } from 'lucide-react';
+import Image from 'next/image';
+import { Facebook, Instagram, Twitter, Linkedin, PhoneCall, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -9,11 +10,14 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
                     {/* Brand Section */}
                     <div className="flex flex-col gap-6">
-                        <div className="flex items-center gap-3">
-                            <div className="bg-[#F1592A] p-2 rounded-lg">
-                                <Box className="w-6 h-6 text-white" />
-                            </div>
-                            <span className="text-xl font-bold tracking-tight">HudHud Express</span>
+                        <div className="flex items-center">
+                            <Image
+                                src="/logoExpress.png"
+                                alt="HudHud Express"
+                                width={160}
+                                height={52}
+                                className="h-12 w-auto object-contain brightness-0 invert"
+                            />
                         </div>
                         <p className="text-[#8E95A5] text-sm leading-relaxed max-w-[280px]">
                             Fast. Reliable. Nationwide courier service you can trust.
