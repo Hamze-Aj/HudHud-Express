@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -297,7 +297,7 @@ function Timeline({ history }: { history: HistoryItem[] }) {
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
-export default function TrackPackagePage() {
+function TrackPackageContent() {
     const searchParams = useSearchParams();
     const [awb, setAwb] = useState("");
     const [loading, setLoading] = useState(false);
@@ -554,5 +554,13 @@ export default function TrackPackagePage() {
                 )}
             </div>
         </div>
+    );
+}
+
+export default function TrackPackagePage() {
+    return (
+        <Suspense fallback={null}>
+            <TrackPackageContent />
+        </Suspense>
     );
 }
