@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -297,6 +298,7 @@ function Timeline({ history }: { history: HistoryItem[] }) {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function TrackPackagePage() {
+    const searchParams = useSearchParams();
     const [awb, setAwb] = useState("");
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState<TrackingData | null>(null);
@@ -344,6 +346,17 @@ export default function TrackPackagePage() {
             setLoading(false);
         }
     }, [awb]);
+
+    // Auto-track when redirected from homepage with ?awb=...
+    useEffect(() => {
+        const paramAwb = searchParams.get("awb");
+        if (paramAwb) {
+            const cleaned = paramAwb.trim().toUpperCase();
+            setAwb(cleaned);
+            handleTrack(cleaned);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleReset = () => {
         setResult(null);

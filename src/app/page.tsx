@@ -1,6 +1,7 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,6 +9,15 @@ import { Truck, HeadphonesIcon, ShieldCheck, Map, Box, ThumbsUp, MapPin } from '
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
+  const router = useRouter();
+  const [trackingNumber, setTrackingNumber] = useState('');
+
+  const handleTrack = () => {
+    const awb = trackingNumber.trim().toUpperCase();
+    if (!awb) return;
+    router.push(`/track?awb=${encodeURIComponent(awb)}`);
+  };
+
   return (
     <div className="flex flex-col w-full min-h-screen">
       {/* 1. Hero Section */}
@@ -31,9 +41,15 @@ export default function Home() {
             <Input
               type="text"
               placeholder="Enter tracking number"
+              value={trackingNumber}
+              onChange={(e) => setTrackingNumber(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleTrack()}
               className="border-0 focus-visible:ring-0 shadow-none text-base px-4 h-12 flex-1 outline-none rounded-l-lg"
             />
-            <Button className="bg-[#F1592A] hover:bg-[#d64a20] text-white rounded-lg px-8 h-12 text-sm font-semibold transition-colors">
+            <Button
+              onClick={handleTrack}
+              className="bg-[#F1592A] hover:bg-[#d64a20] text-white rounded-lg px-8 h-12 text-sm font-semibold transition-colors"
+            >
               Track Package
             </Button>
           </div>
