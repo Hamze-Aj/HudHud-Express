@@ -9,7 +9,7 @@ import {
     MapPin,
     Clock,
     CheckCircle2,
-    Circle,
+
     Loader2,
     AlertCircle,
     RefreshCw,
@@ -135,12 +135,11 @@ function TimelineStep({
     item,
     isLast,
     isLatest,
-    index,
 }: {
     item: HistoryItem;
     isLast: boolean;
     isLatest: boolean;
-    index: number;
+    index?: number;
 }) {
     const cfg = getStatusConfig(item.code, item.status);
     const Icon = cfg.icon;
@@ -522,7 +521,7 @@ export default function TrackPackagePage() {
                         </div>
                         <div className="text-center">
                             <p className="text-gray-600 font-semibold text-sm">Enter your tracking number above</p>
-                            <p className="text-gray-400 text-xs mt-1">You'll see full shipment history and live status</p>
+                            <p className="text-gray-400 text-xs mt-1">You&apos;ll see full shipment history and live status</p>
                         </div>
 
                         {/* Feature hints */}

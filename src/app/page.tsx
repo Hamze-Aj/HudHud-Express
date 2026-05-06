@@ -1,11 +1,10 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { motion } from 'framer-motion';
-import { Link2, Truck, HeadphonesIcon, ShieldCheck, Map, CreditCard, Box, ThumbsUp, MapPin } from 'lucide-react';
+import { Truck, HeadphonesIcon, ShieldCheck, Map, Box, ThumbsUp, MapPin } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
