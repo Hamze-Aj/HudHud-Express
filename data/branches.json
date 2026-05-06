@@ -1,0 +1,37 @@
+{
+  "whatsapp": "9491",
+  "branches": [
+    {
+      "id": 1,
+      "name": "Riyadh Main Branch",
+      "city": "Riyadh",
+      "address": "King Fahd Road, Al Olaya District, Riyadh",
+      "phone": "+966 11 234 5678",
+      "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.674!2d46.6753!3d24.7136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQyJzQ5LjAiTiA0NsKwNDAnMzEuMSJF!5e0!3m2!1sen!2ssa!4v1620000000000!5m2!1sen!2ssa"
+    },
+    {
+      "id": 2,
+      "name": "Jeddah Main Branch",
+      "city": "Jeddah",
+      "address": "Prince Mohammed bin Abdulaziz Road, Al Hamra, Jeddah",
+      "phone": "+966 12 345 6789",
+      "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.345!2d39.1728!3d21.5433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDMyJzM1LjkiTiAzOcKwMTAnMjIuMSJF!5e0!3m2!1sen!2ssa!4v1620000000001!5m2!1sen!2ssa"
+    },
+    {
+      "id": 3,
+      "name": "Dammam Main Branch",
+      "city": "Dammam",
+      "address": "King Saud Road, Al Faisaliyah District, Dammam",
+      "phone": "+966 13 456 7890",
+      "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.123!2d50.0888!3d26.4207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDI1JzE0LjUiTiA1MMKwMDUnMTkuNyJF!5e0!3m2!1sen!2ssa!4v1620000000002!5m2!1sen!2ssa"
+    },
+    {
+      "id": 1778063382012,
+      "name": "GODEY BRANCH",
+      "city": "Godey",
+      "address": "garoonka kubada , kasoo horjeedkisa ",
+      "phone": "+251915151515",
+      "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.123!2d50.0888!3d26.4207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDI1JzE0LjUiTiA1MMKwMDUnMTkuNyJF!5e0!3m2!1sen!2ssa!4v1620000000002!5m2!1sen!2ssa"
+    }
+  ]
+}
