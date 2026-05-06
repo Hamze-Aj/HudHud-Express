@@ -1,14 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { kv } from '@vercel/kv';
 
-const DATA_DIR = path.join(process.cwd(), 'data');
-const DATA_FILE = path.join(DATA_DIR, 'branches.json');
-
-const DEFAULT_DATA = {
-  whatsapp: '966500000000',
-  branches: [] as Branch[],
-};
+const KV_KEY = 'hhe_branches';
 
 interface Branch {
   id: number;
@@ -24,29 +17,20 @@ interface BranchesData {
   branches: Branch[];
 }
 
-function ensureDataFile(): BranchesData {
-  try {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
-    }
-    if (!fs.existsSync(DATA_FILE)) {
-      fs.writeFileSync(DATA_FILE, JSON.stringify(DEFAULT_DATA, null, 2), 'utf-8');
-      return DEFAULT_DATA;
-    }
-    const raw = fs.readFileSync(DATA_FILE, 'utf-8');
-    return JSON.parse(raw) as BranchesData;
-  } catch {
-    return DEFAULT_DATA;
-  }
-}
+const DEFAULT_DATA: BranchesData = {
+  whatsapp: '966500000000',
+  branches: [],
+};
 
 export async function GET() {
   try {
-    const data = ensureDataFile();
-    return NextResponse.json(data);
-  } catch {
+    const data = await kv.get<BranchesData>(KV_KEY);
+    return NextResponse.json(data ?? DEFAULT_DATA);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    console.error('[branches GET]', message);
     return NextResponse.json(
-      { error: 'Failed to read branches data.' },
+      { error: `Failed to read branches data: ${message}` },
       { status: 500 }
     );
   }
@@ -60,27 +44,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid data format.' }, { status: 400 });
     }
 
-    // Ensure data directory exists
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
-    }
-
-    fs.writeFileSync(DATA_FILE, JSON.stringify(body, null, 2), 'utf-8');
+    await kv.set(KV_KEY, body);
 
     return NextResponse.json({ success: true });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
-    // Check for permission errors
-    if (message.includes('EACCES') || message.includes('EPERM')) {
-      return NextResponse.json(
-        {
-          error:
-            'Permission denied writing to data/branches.json. ' +
-            'On cPanel: run `chmod 777 data` and `chmod 666 data/branches.json`.',
-        },
-        { status: 403 }
-      );
-    }
+    console.error('[branches POST]', message);
     return NextResponse.json({ error: `Failed to save: ${message}` }, { status: 500 });
   }
 }

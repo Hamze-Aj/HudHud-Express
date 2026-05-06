@@ -1,6 +1,4 @@
-import React from 'react';
-import fs from 'fs';
-import path from 'path';
+import { kv } from '@vercel/kv';
 import BranchesClient from './BranchesClient';
 
 interface Branch {
@@ -22,21 +20,19 @@ const DEFAULT_DATA: BranchesData = {
   branches: [],
 };
 
-function loadBranchesData(): BranchesData {
-  try {
-    const filePath = path.join(process.cwd(), 'data', 'branches.json');
-    if (!fs.existsSync(filePath)) return DEFAULT_DATA;
-    const raw = fs.readFileSync(filePath, 'utf-8');
-    return JSON.parse(raw) as BranchesData;
-  } catch {
-    return DEFAULT_DATA;
-  }
-}
-
-// Server Component: reads file at request time, no caching
+// Always server-render so we get fresh KV data on every request
 export const dynamic = 'force-dynamic';
 
-export default function BranchesPage() {
-  const data = loadBranchesData();
+export default async function BranchesPage() {
+  let data: BranchesData = DEFAULT_DATA;
+
+  try {
+    const stored = await kv.get<BranchesData>('hhe_branches');
+    if (stored) data = stored;
+  } catch (err) {
+    // KV not configured or unreachable — fall back to defaults silently
+    console.error('[BranchesPage] KV error:', err);
+  }
+
   return <BranchesClient data={data} />;
 }
