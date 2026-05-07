@@ -90,7 +90,7 @@ export default function BranchesClient({ data }: { data: BranchesData }) {
         <div className="relative">
           <div className="inline-flex items-center gap-2 bg-[#3B2A82]/10 text-[#3B2A82] text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
             <MapPin className="w-3.5 h-3.5" />
-            {branches.length} Locations Across the Kingdom
+            {branches.length} Locations Across the Globe
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Our Branches

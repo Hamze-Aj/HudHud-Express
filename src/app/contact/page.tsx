@@ -71,8 +71,8 @@ export default function ContactPage() {
                                 <MapPin className="w-5 h-5 text-white" />
                             </div>
                             <h3 className="font-bold text-gray-900 text-[15px] mb-1">Head Office</h3>
-                            <p className="font-bold text-gray-900 text-[14px]">Riyadh, Saudi Arabia</p>
-                            <p className="text-gray-500 text-[13px] mt-1">King Fahd Road, Al Olaya</p>
+                            <p className="font-bold text-gray-900 text-[14px]">Addiss Ababa , Ethiopia </p>
+                            <p className="text-gray-500 text-[13px] mt-1">bole mechael</p>
                         </CardContent>
                     </Card>
                 </div>
